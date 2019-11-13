@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {DescriptiveStatementComponent} from './descriptive-statement/descriptive-statement.component';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  title = 'expense-tracker';
+  initialPage = DescriptiveStatementComponent;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

@@ -1,0 +1,43 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Register transaction</div>
+        <div class="right">
+            <ons-toolbar-button (click)="save()" form="transactionForm" [disabled]="transactionForm.pristine || transactionForm.invalid">
+                Done
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <div class="background"></div>
+    <div class="content">
+        <form [formGroup]="transactionForm">
+            <div class="form-group">
+                <ons-input class="full-width" modifier="underbar" placeholder="Description" formControlName="description"></ons-input>
+            </div>
+
+            <div class="form-group">
+                <ons-input class="full-width" type="number" modifier="underbar" placeholder="Amount" formControlName="amount"></ons-input>
+            </div>
+
+            <div class="form-group">
+                <p id="selected-fruit">
+                    Transaction type
+                </p>
+
+                <div class="radio-group" *ngFor="let tType of transactionTypes; let i = index">
+                    <ons-radio
+                            name="transaction-type"
+                            [attr.input-id]="'transaction-type-' + i"
+                            [attr.value]="tType.value"
+                            formControlName="transactionType"
+                    >
+                    </ons-radio>
+                    <label [attr.for]="'transaction-type-' + i">
+                        {{ tType.label }}
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+</ons-page>

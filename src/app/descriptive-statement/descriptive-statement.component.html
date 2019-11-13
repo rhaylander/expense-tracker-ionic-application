@@ -1,0 +1,31 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="center">All transactions</div>
+        <div class="right">
+            <ons-toolbar-button (click)="push()">
+                <ons-icon icon="md-plus"></ons-icon> Add
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <div class="content">
+        <ons-list>
+            <ons-list-header>
+                <div class="balance">
+                    <div class="title">Balance</div>
+                    <div class="amount {{balance > 0 ? 'green' : balance < 0 ? 'red' : ''}}">{{ balance | currency:'BRL' }}</div>
+                </div>
+            </ons-list-header>
+            <ons-list-item *ngFor="let transaction of $transactions | async">
+                <div class="transaction-item">
+                    <div>{{ transaction.createdAt | date:'MM/dd/yyyy hh:mm:ss' }}</div>
+                    <div class="description">{{ transaction.description }}</div>
+                    <div class="amount" [ngClass]="{
+                        green: transaction.transactionType === 'deposit',
+                        red: transaction.transactionType === 'expense'
+                    }">{{ transaction.amount | currency:'BRL' }}</div>
+                </div>
+            </ons-list-item>
+        </ons-list>
+    </div>
+</ons-page>

@@ -24,3 +24,26 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* Onsen UI CSS */
+@import "~onsenui/css/onsenui.css";
+@import "~onsenui/css/onsen-css-components.css";
+
+/* Global CSS */
+form {
+  padding: 12px;
+}
+
+.form-group {
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  ons-input.full-width {
+    width: 100%;
+  }
+
+  .radio-group {
+    margin-bottom: 4px;
+  }
+}
