@@ -18,14 +18,28 @@
             </ons-list-header>
             <ons-list-item *ngFor="let transaction of $transactions | async">
                 <div class="transaction-item">
-                    <div>{{ transaction.createdAt | date:'MM/dd/yyyy hh:mm:ss' }}</div>
-                    <div class="description">{{ transaction.description }}</div>
-                    <div class="amount" [ngClass]="{
-                        green: transaction.transactionType === 'deposit',
-                        red: transaction.transactionType === 'expense'
-                    }">{{ transaction.amount | currency:'BRL' }}</div>
+                    <div class="transaction-details">
+                        <div class="row-1">
+                            <div>{{ transaction.createdAt | date:'MM/dd/yyyy hh:mm:ss' }}</div>
+                            <div class="description">{{ transaction.description }}</div>
+                        </div>
+                        <div class="row-2">
+                            <div class="amount" [ngClass]="{
+                                green: transaction.transactionType === 'deposit',
+                                red: transaction.transactionType === 'expense'
+                            }">{{ transaction.amount | currency:'BRL' }}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <ons-button [disabled]="!transaction.receipt" (click)="viewReceipt(transaction);receiptModal.show()">View receipt</ons-button>
+                    </div>
                 </div>
             </ons-list-item>
         </ons-list>
     </div>
 </ons-page>
+
+<ons-modal #receiptModal>
+    <p><img *ngIf="selectedTransaction && selectedTransaction.receipt" [src]="selectedTransaction.receipt" /></p>
+    <p><ons-button (click)="receiptModal.hide()">Close</ons-button></p>
+</ons-modal>

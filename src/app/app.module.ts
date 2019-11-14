@@ -7,13 +7,13 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
-// import { AppRoutingModule } from './app-routing.module';
 import { OnsenModule } from 'ngx-onsenui';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BaseDataSourceStrategy } from './shared/data-sources/base-data-source-strategy';
 import { LocalStorageDataSourceStrategy } from './shared/data-sources/local-storage-data-source-strategy';
 import { DescriptiveStatementComponent } from './descriptive-statement/descriptive-statement.component';
 import { RegisterTransactionComponent } from './register-transaction/register-transaction.component';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
     declarations: [
@@ -30,7 +30,6 @@ import { RegisterTransactionComponent } from './register-transaction/register-tr
         OnsenModule,
         ReactiveFormsModule,
         IonicModule.forRoot(),
-        // AppRoutingModule
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
@@ -38,6 +37,7 @@ import { RegisterTransactionComponent } from './register-transaction/register-tr
     providers: [
         StatusBar,
         SplashScreen,
+        Camera,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         { provide: BaseDataSourceStrategy, useExisting: LocalStorageDataSourceStrategy },
     ],

@@ -38,6 +38,16 @@
                     </label>
                 </div>
             </div>
+
+            <div>
+                <p>Receipt</p>
+                <p>
+                    <ion-button (click)="takePictureOfReceipt()">
+                        <ion-icon name="camera"></ion-icon>
+                    </ion-button>
+                </p>
+                <p *ngIf="transactionForm.value.receipt"><img [src]="transactionForm.value.receipt" /></p>
+            </div>
         </form>
     </div>
 </ons-page>

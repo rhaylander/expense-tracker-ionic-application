@@ -14,7 +14,8 @@ import { Observable } from 'rxjs';
 })
 export class DescriptiveStatementComponent implements OnInit {
     $transactions: Observable<Transaction[]>;
-    balance: number = 0;
+    balance = 0;
+    selectedTransaction: Transaction;
 
     constructor(
         private navigator: OnsNavigator,
@@ -44,8 +45,11 @@ export class DescriptiveStatementComponent implements OnInit {
             });
     }
 
+    viewReceipt(transaction: Transaction) {
+        this.selectedTransaction = transaction;
+    }
+
     push() {
         this.navigator.element.pushPage(RegisterTransactionComponent);
     }
-
 }

@@ -1,7 +1,20 @@
 .transaction-item {
     display: grid;
-    grid-template-columns: 180px auto auto;
+    grid-template-columns: auto min-content;
+    grid-column-gap: 15px;
     width: 100%;
+
+    .row-1 {
+        display: grid;
+        grid-template-columns: auto auto;
+        width: 100%;
+    }
+
+    .row-2 {
+        display: grid;
+        width: 100%;
+        justify-items: end;
+    }
 }
 
 .amount {
